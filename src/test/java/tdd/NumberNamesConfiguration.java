@@ -1,9 +1,9 @@
 package tdd;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.context.annotation.Configuration;
 
-@ContextConfiguration
+@Configuration
 public class NumberNamesConfiguration {
   @Bean public NumberNamesRepository repository() {
     return new EnglishNumberNamesRepository();
