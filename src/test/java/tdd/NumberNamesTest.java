@@ -4,49 +4,46 @@
  */
 package tdd;
 
+import com.orange.olc.training.configuration.Configuration;
+import com.orange.olc.training.matcher.NumberMatcher;
 import org.hamcrest.Matcher;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatcher;
+import org.mockito.internal.matchers.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  *
  * @author Gamal Shaban OLC
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = Configuration.class)
 public class NumberNamesTest {
 
-    @Test
-    public void isReadingOneDigit() throws Exception {
-        assertThat("one", readNumber(1));
-        assertThat("nine", readNumber(9));
-    }
+    @Autowired
+    NumberMatcher numberMatcher;
 
-    /*@Test
-    public void isReadingOneDigit2() throws Exception {
-        
-    }*/
-
+//     @Test
+//    public void checkInit() throws Exception {
+//        assertThat(numberMatcher, is(not(nullValue())));
+//    }
+    
     @Test
-    public void isReadingTwoDigits() throws Exception {
-        assertThat("twelve", readNumber(12));
+    public void checkOne() throws Exception {
+        assertThat(numberMatcher.matches(1), is("one"));
     }
 
     @Test
-    public void isReadingThreeDigits() throws Exception {
-        assertThat("Three Hundred and forty five", readNumber(345));
+    public void checkTwo() throws Exception {
+        assertThat(numberMatcher.matches(2), is("two"));
     }
 
-    @Test
-    public void isReadingSixDigits() throws Exception {
-        assertThat("forty three million, one hundred and twelve thousand, six hundred and three", readNumber(43112603));
-    }
-
-    private Matcher<String> readNumber(final Integer digit) {
-        return new ArgumentMatcher<String>() {
-            @Override
-            public boolean matches(Object argument) {
-                return NumberNames.read(digit).equalsIgnoreCase(argument.toString());
-            }
-        };
-    }
+  
 }
