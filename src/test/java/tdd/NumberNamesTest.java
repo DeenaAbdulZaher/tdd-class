@@ -4,10 +4,10 @@
  */
 package tdd;
 
-import org.hamcrest.Matcher;
-import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Test;
-import org.mockito.ArgumentMatcher;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 /**
  *
@@ -16,9 +16,13 @@ import org.mockito.ArgumentMatcher;
 public class NumberNamesTest {
 
     @Test
-    public void isReadingOneDigit() throws Exception {
-        assertThat("one", readNumber(1));
-        assertThat("nine", readNumber(9));
+    public void isReadingOne() throws Exception {
+        assertThat(readNumber(1), is("one"));
+    }
+
+    @Test
+    public void isReadingNine() throws Exception {
+        assertThat(new NumberNames().read(9), is("nine"));
     }
 
     /*@Test
@@ -28,25 +32,22 @@ public class NumberNamesTest {
 
     @Test
     public void isReadingTwoDigits() throws Exception {
-        assertThat("twelve", readNumber(12));
+        assertThat(readNumber(12), is("twelve"));
     }
 
     @Test
     public void isReadingThreeDigits() throws Exception {
-        assertThat("Three Hundred and forty five", readNumber(345));
+        assertThat(readNumber(345),
+                is("Three Hundred and forty five"));
     }
 
     @Test
     public void isReadingSixDigits() throws Exception {
-        assertThat("forty three million, one hundred and twelve thousand, six hundred and three", readNumber(43112603));
+        assertThat(readNumber(43112603),
+                is("forty three million, one hundred and twelve thousand, six hundred and three"));
     }
 
-    private Matcher<String> readNumber(final Integer digit) {
-        return new ArgumentMatcher<String>() {
-            @Override
-            public boolean matches(Object argument) {
-                return NumberNames.read(digit).equalsIgnoreCase(argument.toString());
-            }
-        };
+    private String readNumber(final Integer digit) {
+      return new NumberNames().read(digit);
     }
 }

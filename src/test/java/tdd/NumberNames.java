@@ -13,21 +13,15 @@ import java.util.Map;
  */
 class NumberNames {
 
-    public static String read(Integer digit){
-        String number;
-        switch(digit.toString().length()){
-            case 1:{
-                
-            }
-        }
-        
-        
-        return "One";
+  private NumberNamesRepository numberNameRepository = new EnglishNumberNamesRepository();
+
+  public String read(Integer digit){
+        return numberNameRepository.nameOf(digit);
     }
     
-    private final static Map<Integer,String> oneDigitMap= new HashMap<>();
+    private final Map<Integer,String> oneDigitMap= new HashMap<Integer,String>();
     
-    private static String readOneDigit(Integer digit)throws Exception{
+    private String readOneDigit(Integer digit)throws Exception{
         if(digit.toString().length()>1){
             throw new Exception("Digits Length must be only one digit.");
         }
