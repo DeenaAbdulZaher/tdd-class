@@ -1,6 +1,7 @@
 package com.spring.training.day1.numberingKata.generator;
 
-import com.spring.training.day1.numberingKata.container.EnglishNumberContainer;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.spring.training.day1.numberingKata.container.NumberContainer;
 
 
@@ -10,13 +11,14 @@ import com.spring.training.day1.numberingKata.container.NumberContainer;
 public class EnglishNumberGenerator implements NumberGenerator {
 
 	/** The number container. */
+	@Autowired
 	private NumberContainer numberContainer;
 
 	/**
 	 * Instantiates a new english number generator.
 	 */
 	public EnglishNumberGenerator() {
-		this.numberContainer = new EnglishNumberContainer();
+//		this.numberContainer = new EnglishNumberContainer();
 	}
 
 	/**
