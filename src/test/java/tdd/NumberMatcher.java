@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class NumberMatcher {
 
     @Autowired
-    NamesRepository englishRepository;
+    NamesRepository repository;
 
-    public NumberMatcher() {
+    public NumberMatcher(NamesRepository repository) {
+        this.repository = repository;
+        System.out.println(">>>>>>>>>>> Constructing NumberMatcher...");
+
     }
 
     String numberName(int i) {
@@ -16,7 +19,7 @@ public class NumberMatcher {
 
         if (iStr.length() > 0) {
             char c = iStr.charAt(0);
-            return englishRepository.getName(String.valueOf(c));
+            return repository.getName(String.valueOf(c));
         } else return "";
     }
 }

@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.naming.Context;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -18,6 +16,9 @@ public class NumberNamesTest {
     @Autowired
     private NumberMatcher numberMatcher;
 
+    @Autowired
+    private NumberMatcher numberMatcher2;
+
     @Test
     public void should1beOne() throws Exception {
         assertThat(numberMatcher.numberName(1), is("one"));
@@ -27,6 +28,5 @@ public class NumberNamesTest {
     public void should2beTwo() throws Exception {
         assertThat(numberMatcher.numberName(2), is("two"));
     }
-
 
 }

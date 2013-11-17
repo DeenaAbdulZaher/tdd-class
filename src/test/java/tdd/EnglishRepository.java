@@ -8,6 +8,7 @@ public class EnglishRepository implements NamesRepository {
     private final HashMap<String, String> names = new HashMap<String, String>();
 
     public EnglishRepository() {
+        System.out.println(">>>>>>>>>>> Constructing EnglishRepository...");
         names.put("1","one");
         names.put("2","two");
         names.put("3","three");
