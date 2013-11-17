@@ -4,14 +4,23 @@
  */
 package tdd;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author Gamal Shaban OLC
  */
 class NumberNames {
 
-  private NumberNamesRepository numberNameRepository =
-          new EnglishNumberNamesRepository();
+  @Autowired
+  NumberNamesRepository numberNameRepository;
+
+  NumberNames(NumberNamesRepository numberNameRepository) {
+    this.numberNameRepository = numberNameRepository;
+  }
+
+  public NumberNames() {
+  }
 
   public String read(Integer digit){
         return numberNameRepository.nameOf(digit);

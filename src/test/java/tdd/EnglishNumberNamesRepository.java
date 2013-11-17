@@ -7,6 +7,7 @@ public class EnglishNumberNamesRepository implements NumberNamesRepository {
   private Map<Integer, String> numberNames = new HashMap<Integer, String>();
 
   public EnglishNumberNamesRepository() {
+    System.out.println("Instantiating English Number Names Repository");
     numberNames.put(1, "one");
     numberNames.put(2, "two");
     numberNames.put(3, "three");

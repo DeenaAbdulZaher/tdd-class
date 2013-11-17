@@ -22,7 +22,7 @@ public class NumberNamesTest {
 
     @Test
     public void isReadingNine() throws Exception {
-        assertThat(new NumberNames().read(9), is("nine"));
+        assertThat(new NumberNames(new EnglishNumberNamesRepository()).read(9), is("nine"));
     }
 
     /*@Test
@@ -48,6 +48,6 @@ public class NumberNamesTest {
     }
 
     private String readNumber(final Integer digit) {
-      return new NumberNames().read(digit);
+      return new NumberNames(new EnglishNumberNamesRepository()).read(digit);
     }
 }
