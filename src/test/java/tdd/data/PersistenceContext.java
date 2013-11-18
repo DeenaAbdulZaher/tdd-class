@@ -14,8 +14,9 @@ public class PersistenceContext {
     //Load these properties from a properties file, or get the datasource from JNDI
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    dataSource.setUrl("jdbc:mysql://localhost/test");
+    dataSource.setUrl("jdbc:mysql://localhost/tddclass");
     dataSource.setUsername("root");
+    dataSource.setPassword("123456");
     return dataSource;
   }
 
